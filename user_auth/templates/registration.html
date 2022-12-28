@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+{% block body_block %}
+<div class="jumbotron">
+    {% if register %}
+    <h3>Thank you for registering</h3>
+    {% else %}
+    <h3>Register Here!</h3>
+    <h3>Fill out the form below: </h3>
+
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ user_form.as_ul }}
+        {{ profile_form.as_ul }}
+        <input type="submit" name="" value="Sign up!">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
+</html>
